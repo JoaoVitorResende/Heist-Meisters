@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Project/Art/GFX/Interface/Fonts/kenvector_future.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Project/Art/GFX/Interface/PNG/dot_shadow.png" type="Texture" id=2]
+[ext_resource path="res://Project/Art/GFX/Interface/PNG/dotRed.png" type="Texture" id=3]
+[ext_resource path="res://Project/Art/GFX/Interface/PNG/glassPanel_cornerTL.png" type="Texture" id=4]
+[ext_resource path="res://Project/Script/SuspicionMeter.gd" type="Script" id=5]
+[ext_resource path="res://Project/Art/GFX/Interface/PNG/glassPanel_cornerTR.png" type="Texture" id=6]
+[ext_resource path="res://Project/Script/LootContainer.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -176.0
+margin_top = -70.0
+texture = ExtResource( 4 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/NinePatchRect/CenterContainer"]
+margin_left = 17.0
+margin_top = 17.0
+margin_right = 146.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="Control/NinePatchRect/CenterContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 101.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 1 )
+text = "suspicion"
+
+[node name="SuspicionMeter" type="TextureProgress" parent="Control/NinePatchRect/CenterContainer/HBoxContainer" groups=["SuspicionMeter"]]
+margin_left = 105.0
+margin_right = 129.0
+margin_bottom = 24.0
+max_value = 300.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+fill_mode = 4
+script = ExtResource( 5 )
+
+[node name="LootContainer" type="NinePatchRect" parent="Control" groups=["Loot"]]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -70.0
+margin_right = 330.0
+rect_min_size = Vector2( 300, 70 )
+texture = ExtResource( 6 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+script = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/LootContainer"]
+margin_left = 12.0
+margin_top = 3.0
+margin_right = 80.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 20, 20 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Control/LootContainer/VBoxContainer"]
+margin_right = 68.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 2 )
+text = "Loot"
+
+[node name="ItemList" type="ItemList" parent="Control/LootContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 68.0
+margin_bottom = 31.0
+auto_height = true
+max_columns = 7
+icon_scale = 0.25

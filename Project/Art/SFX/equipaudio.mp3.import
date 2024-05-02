@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/equipaudio.mp3-64d76cb6405b61cba760c969011f68c5.mp3str"
+
+[deps]
+
+source_file="res://Project/Art/SFX/equipaudio.mp3"
+dest_files=[ "res://.import/equipaudio.mp3-64d76cb6405b61cba760c969011f68c5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
